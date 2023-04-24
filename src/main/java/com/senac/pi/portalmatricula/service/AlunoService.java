@@ -2,6 +2,7 @@ package com.senac.pi.portalmatricula.service;
 
 
 import com.senac.pi.portalmatricula.model.Aluno;
+import com.senac.pi.portalmatricula.model.PagamentoBoleto;
 import com.senac.pi.portalmatricula.model.dto.AlunoDto;
 import com.senac.pi.portalmatricula.repository.AlunoRepository;
 import org.modelmapper.ModelMapper;
@@ -37,6 +38,7 @@ public class AlunoService {
     public AlunoDto adicionar(AlunoDto alunoDto){
         Aluno aluno = new ModelMapper().map(alunoDto, Aluno.class);
         aluno.setMatrícula("M"+alunoDto.getCpf());
+        aluno.setCodPagamento(PagamentoBoleto.gerarCod());
         aluno = alunoRepository.save(aluno);
         return alunoDto;
     }

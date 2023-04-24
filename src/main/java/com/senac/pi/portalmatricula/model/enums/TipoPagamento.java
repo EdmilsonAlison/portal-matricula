@@ -2,18 +2,15 @@ package com.senac.pi.portalmatricula.model.enums;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-
 @Getter
-public enum Curso {
+public enum TipoPagamento {
 
-    ENGENHARIA(1, "ENGENHARIA"), DADOS(2, "ENGENHARIA DE DADOS");
+    BOLETO(1, "BOLETO"), PIX(2, "PIX");
 
     private Integer id;
     private String nome;
 
-
-    Curso(int id, String nome) {
+    TipoPagamento(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
