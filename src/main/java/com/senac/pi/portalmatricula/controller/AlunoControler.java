@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ class AlunoController {
 
 
     @PostMapping("/cadastrar")
-    public ResponseEntity<AlunoDto> adicionar(@RequestBody AlunoDto alunoDto){
+    public ResponseEntity<AlunoDto> adicionar(@RequestBody @Valid AlunoDto alunoDto){
         alunoService.adicionar(alunoDto);
         return new ResponseEntity<>(alunoDto, HttpStatus.CREATED);
     }
