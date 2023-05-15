@@ -1,14 +1,13 @@
 package com.senac.pi.portalmatricula.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.senac.pi.portalmatricula.model.enums.Curso;
 import com.senac.pi.portalmatricula.model.enums.TipoPagamento;
 import lombok.Getter;
 import lombok.Setter;
-import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
-
-import static com.senac.pi.portalmatricula.model.enums.TipoPagamento.BOLETO;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -20,15 +19,34 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @Enumerated(EnumType.STRING)
-    private Curso curso;
+
+    private String sobreNome;
 
     private String cpf;
 
+    private String rg;
+
+
+    private String telefone;
+
+    private String email;
+
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private LocalDate dataNascimento;
+
+    private String nacionalidade;
+
+    @OneToOne
+    private Endereco endereco;
+
     private String matrícula;
+
+    @Enumerated(EnumType.STRING)
+    private Curso curso;
 
     @Enumerated(EnumType.ORDINAL)
     private TipoPagamento pagamento;
+
 
     private Integer codPagamento;
 
